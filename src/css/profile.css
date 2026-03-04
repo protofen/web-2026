@@ -13,6 +13,7 @@
     font-family: Golos-UI_Bold;
     src: url(/src/fonts/Golos-UI_Bold.ttf);
 }
+/* fonts css */
 
 body {
     background-color: #fff;
@@ -24,6 +25,8 @@ body {
     color: #222222;
     position: relative;
 }
+
+/* отдельный стиль */
 
 .icons {
     position: absolute;
