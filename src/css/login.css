@@ -26,8 +26,9 @@ body {
 .login-container {
     position: relative;
     width: 1200px;
-    height: 800px;
+    height: 600px;
     margin: 0 auto;
+    bottom: 30px;
 }
 
 .login-img {
