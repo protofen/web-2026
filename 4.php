@@ -72,11 +72,11 @@ if ($startTicket !== null && $endTicket !== null) {
 <body>
     <form method="post">
         <div>
-            <label for="start_ticket">Начальный номер билета (6 цифр):</label>
+            <label for="start_ticket">Начальный номер билета:</label>
             <input type="text" name="start_ticket" id="start_ticket" pattern="\d{6}" maxlength="6" required>
         </div>
         <div>
-            <label for="end_ticket">Конечный номер билета (6 цифр):</label>
+            <label for="end_ticket">Конечный номер билета:</label>
             <input type="text" name="end_ticket" id="end_ticket" pattern="\d{6}" maxlength="6" required>
         </div>
         <button type="submit">Найти счастливые билеты</button>

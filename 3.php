@@ -11,9 +11,9 @@ function parseDate(string $input): ?array {
         if (preg_match($pattern, trim($input), $matches)) {
             if (count($matches) == 4) {
                 if (is_numeric($matches[1]) && is_numeric($matches[2]) && is_numeric($matches[3])) {
-                    if (strlen($matches[3]) == 4) { // ГГГГ в конце
+                    if (strlen($matches[3]) == 4) {
                         return [(int)$matches[1], (int)$matches[2], (int)$matches[3]];
-                    } elseif (strlen($matches[1]) == 4) { // ГГГГ в начале
+                    } elseif (strlen($matches[1]) == 4) {
                         return [(int)$matches[3], (int)$matches[2], (int)$matches[1]];
                     }
                 }
@@ -77,12 +77,12 @@ if ($dateString !== null) {
     $parsedDate = parseDate($dateString);
     
     if ($parsedDate === null) {
-        $error = 'Не удалось распознать формат даты. Примеры: 15.04.1452, 15-04-1452, 15/04/1452, 15 апреля 1452';
+        $error = 'Не удалось распознать формат даты';
     } else {
         list($day, $month, $year) = $parsedDate;
         
         if ($day < 1 || $day > 31 || $month < 1 || $month > 12 || $year < 1) {
-            $error = 'Пожалуйста, введите корректную дату';
+            $error = 'Введите корректную дату';
         } else {
             $zodiac = getZodiacSign($day, $month);
             
