@@ -17,11 +17,16 @@ function getPostParameter(string $key): ?string {
 }
 
 $result = null;
+$error = null;
 $yearString = getPostParameter('year');
 
-if ($yearString !== null) {
+if ($yearString !== null && $yearString < 30000) {
     $year = (int)$yearString;
-    $result = isLeapYear($year) ? 'YES' : 'NO';
+    if ($year <= 0) {
+        $error = 'Год должен быть положительным числом больше 0';
+    } else {
+        $result = isLeapYear($year) ? 'YES' : 'NO';
+    }
 }
 
 ?>
@@ -30,15 +35,30 @@ if ($yearString !== null) {
 <html>
 <head>
     <title>Високосный год</title>
+    <style>
+        .error {
+            color: red;
+        }
+        input[type=number] {
+            padding: 5px;
+            margin: 5px 0;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <form method="post">
         <label for="year">Введите год:</label>
-        <input type="number" name="year" id="year" required>
+        <input type="number", name="year", id="year", min="1", max="29999" , required>
         <button type="submit">Проверить</button>
     </form>
     
-    <?php if ($result !== null): ?>
+    <?php if ($error !== null): ?>
+        <p class="error">Ошибка: <?php echo $error; ?></p>
+    <?php elseif ($result !== null): ?>
         <p>Результат: <?php echo $result; ?></p>
     <?php endif; ?>
 </body>
