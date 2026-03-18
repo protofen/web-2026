@@ -37,7 +37,7 @@ if ($numberString !== null) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Факториал числа</title>
+    <title>5</title>
 </head>
 <body>
     <form method="post">

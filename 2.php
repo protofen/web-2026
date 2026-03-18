@@ -38,7 +38,7 @@ if ($digitString !== null) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Цифра в слово</title>
+    <title>2</title>
 </head>
 <body>
     <form method="post">

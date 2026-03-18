@@ -55,7 +55,7 @@ if ($startTicket !== null && $endTicket !== null) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Счастливые билеты</title>
+    <title>4</title>
     <style>
         .result {
             margin-top: 20px;

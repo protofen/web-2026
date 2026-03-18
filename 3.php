@@ -100,7 +100,7 @@ if ($dateString !== null) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Знак зодиака</title>
+    <title>3</title>
 </head>
 <body>
     <form method="post">

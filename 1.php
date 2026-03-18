@@ -34,7 +34,7 @@ if ($yearString !== null && $yearString < 30000) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Високосный год</title>
+    <title>1</title>
     <style>
         .error {
             color: red;
