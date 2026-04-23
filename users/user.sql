@@ -1,0 +1,1 @@
+INSERT INTO `blog`.`user` (`iduser`, `name`, `surname`) VALUES ('1', '1', '1');
