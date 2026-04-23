@@ -1,0 +1,1 @@
+INSERT INTO `blog`.`post` (`idpost`, `likes`, `comments`, `date`) VALUES ('1', '1', '1', '2026-01-01');
