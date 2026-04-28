@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Golos-UI_Regular;
+    src: url(/src/fonts/Golos-UI_Regular.ttf);
+}
+
+@font-face {
+    font-family: Golos-UI_Bold;
+    src: url(/src/fonts/Golos-UI_Bold.ttf);
+}
+
+body {
+    background-color: #fff;
+    font-family: Golos-UI_Regular;
+    min-height: 100vh;
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.icon-dot {
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.icon-user {
+    margin-bottom: 0;
+}
+
+.container {
+    position: relative;
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.profile-card {
+    position: relative;
+}
+
+.profile-top {
+    top: 10px;
+}
+
+.profile-bottom {
+    top: 675px;
+}
+
+.profile-avatar {
+    position: absolute;
+    left: 365px;
+    width: 32px;
+    height: 32px;
+}
+
+.avatar-img {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-name {
+    position: absolute;
+    left: 400px;
+    top: 8px;
+    font-size: 14px;
+    font-family: Golos-UI_Bold;
+    white-space: nowrap;
+}
+
+.post-edit {
+    position: absolute;
+    top: 10px;
+    right: 370px;
+}
+
+.post-container {
+    position: absolute;
+    left: 395px;
+}
+
+.post-top {
+    top: 50px;
+}
+
+.post-bottom {
+    top: 720px;
+}
+
+.post-image {
+    display: block;
+}
+
+.like-button {
+    position: absolute;
+    top: 530px;
+    left: 400px;
+    width: 68px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    font-family: Golos-UI_Regular;
+    font-size: 15px;
+    color: #222222;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.like-icon {
+    margin-right: 2px;
+}
+
+.post-text {
+    position: absolute;
+    left: 400px;
+    top: 570px;
+    font-size: 15px;
+    line-height: 1.4;
+    width: 520px;
+}
+
+.post-time {
+    position: absolute;
+    left: 400px;
+    top: 620px;
+    font-size: 15px;
+    color: #bababa;
+}
