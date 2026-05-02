@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>lw8</title>
+</head>
+<body>
+    <button onclick="testPrimeNumber()">1. Простые числа</button>
+    <br>
+    <button onclick="testVowels()">2. Подсчет гласных в строке</button>
+    <br>
+    <button onclick="testUnique()">3. Уникальные элементы в массиве</button>
+    <br>
+    <button onclick="testMerge()">4. Объединение объектов</button>
+    <br>
+    <button onclick="testMapArray()">5. Преобразование массива объектов</button>
+    <br>
+    <button onclick="testMapObject()">6. Метод map для объекта</button>
+    <br>
+    <button onclick="testPassword()">7. Пароль</button>
+    <br>
+    <button onclick="testMapFilter()">8. Объединение map и filter</button>
+<script>
+//1
+    function isPrimeNumber(data) {
+        if (typeof data !== 'number' && !Array.isArray(data)) {
+            console.error("Ошибка: параметр должен быть числом или массивом");
+            return;
+        } 
+        if (typeof data === 'number') {
+            if (!Number.isInteger(data) || data < 2) {
+                console.log(`${data} не простое число`);
+            }
+            else {
+                let isPrime = true;
+                for (let i = 2; i <= Math.sqrt(data); i++) {
+                    if (data % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                console.log(`${data} ${isPrime ? 'простое число' : 'не простое число'}`);
+            }
+            return;
+        }
+        const primes = [];
+        const nonPrimes = [];
+        for (let num of data) {
+            if (typeof num !== 'number' || !Number.isInteger(num)) {
+                console.error(`Ошибка: элемент "${num}" не является целым числом`);
+                return;
+            }
+                
+             if (num < 2) {
+                nonPrimes.push(num);
+                continue;
+            }
+                
+            let isPrime = true;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+                
+            if (isPrime) {
+                primes.push(num);
+            }
+            else {
+                nonPrimes.push(num);
+            }
+        }
+        let message = "";
+        if (primes.length > 0) {
+            message += primes.join(", ") + " простые числа";
+        }
+        if (nonPrimes.length > 0) {
+            if (message) message += ", ";
+            message += nonPrimes.join(", ") + " не простые числа";
+        }
+        console.log(message);
+    }
+        
+//2
+    function countVowels(str) {
+        if (typeof str !== 'string') {
+            console.error("Ошибка: параметр должен быть строкой");
+            return 0;
+        }
+        const vowels = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я',
+                        'А', 'Е', 'Ё', 'И', 'О', 'У', 'Ы', 'Э', 'Ю', 'Я'];
+        let count = 0;
+        const foundVowels = [];
+        for (let char of str) {
+            if (vowels.includes(char)) {
+                count++;
+                foundVowels.push(char.toLowerCase());
+            }
+        }  
+        console.log(`"${str}"  ${count} гласных (${foundVowels.join(', ')})`);
+        return count;
+    }
+        
+//3
+    function uniqueElements(arr) {
+        if (!Array.isArray(arr)) {
+            console.error("Ошибка: параметр должен быть массивом");
+            return {};
+        } 
+        const result = {};
+        for (let element of arr) {
+            const key = String(element);
+            result[key] = (result[key] || 0) + 1;
+        }
+        console.log("Результат:", result);
+        return result;
+    }
+        
+//4
+    function mergeObjects(obj1, obj2) {
+        if (typeof obj1 !== 'object' || typeof obj2 !== 'object' || 
+            obj1 === null || obj2 === null) {
+            console.error("Ошибка: оба параметра должны быть объектами");
+            return {};
+        }  
+        const result = { ...obj1, ...obj2 };
+        console.log(`{${JSON.stringify(obj1)}} + {${JSON.stringify(obj2)}} = {${JSON.stringify(result)}}`);
+        return result;
+    }
+        
+//5
+    function getUserNames(users) {
+        if (!Array.isArray(users)) {
+            console.error("Ошибка: параметр должен быть массивом");
+            return [];
+        }
+        const names = users.map(user => user.name);
+        console.log("Имена пользователей:", names);
+        return names;
+    }
+        
+//6
+    function mapObject(obj, callback) {
+        if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+            console.error("Ошибка: первый параметр должен быть объектом");
+            return {};
+        }  
+        if (typeof callback !== 'function') {
+            console.error("Ошибка: второй параметр должен быть функцией");
+            return {};
+        } 
+        const result = {};
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                result[key] = callback(obj[key], key, obj);
+            }
+        }  
+        console.log(`Результат map:`, result);
+        return result;
+    }
+        
+//7
+    function generatePassword(length) {
+        if (typeof length !== 'number' || length < 4) {
+            console.error("Ошибка: длина пароля должна быть числом не меньше 4");
+            return null;
+        }
+        const lowerLetters = 'abcdefghijklmnopqrstuvwxyz';
+        const upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const digits = '0123456789';
+        const specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+        let password = '';
+        password += lowerLetters[Math.floor(Math.random() * lowerLetters.length)];
+        password += upperLetters[Math.floor(Math.random() * upperLetters.length)];
+        password += digits[Math.floor(Math.random() * digits.length)];
+        password += specialChars[Math.floor(Math.random() * specialChars.length)];
+        const allChars = lowerLetters + upperLetters + digits + specialChars;
+        for (let i = password.length; i < length; i++) {
+            password += allChars[Math.floor(Math.random() * allChars.length)];
+        }  
+        password = password.split('').sort(() => Math.random() - 0.5).join(''); 
+        console.log(`Пароль (длина ${length}): ${password}`);
+        return password;
+    }
+        
+//8
+    function processNumbers(numbers) {
+        if (!Array.isArray(numbers)) {
+            console.error("Ошибка: параметр должен быть массивом");
+            return [];
+        }
+        const mapped = numbers.map(num => num * 3);
+        console.log(`После map (×3): [${mapped}]`);
+        const filtered = mapped.filter(num => num > 10);
+        console.log(`После filter (>10): [${filtered}]`);
+        return filtered;
+    }
+        
+//тесты
+    function testPrimeNumber() {
+        console.log("Задание 1");
+        isPrimeNumber(3);
+        isPrimeNumber(4);
+        isPrimeNumber([3, 4, 5]);
+    }   
+    function testVowels() {
+        console.log("Задание 2");
+        countVowels("Привет, мир!");
+    } 
+    function testUnique() {
+        console.log("Задание 3");
+        uniqueElements(['привет', 'hello', 1, '1']);
+    }  
+    function testMerge() {
+        console.log("Задание 4");
+        mergeObjects({ a: 1, b: 2 }, { b: 3, c: 4 });
+    }  
+    function testMapArray() {
+        console.log("Задание 5");
+        const users = [
+            { id: 1, name: "Alice" },
+            { id: 2, name: "Bob" },
+            { id: 3, name: "Charlie" }
+        ];
+        getUserNames(users);
+    }   
+    function testMapObject() {
+        console.log("Задание 6");
+        const nums = { a: 1, b: 2, c: 3 };
+        mapObject(nums, x => x * 2);
+    } 
+    function testPassword() {
+        console.log("Задание 7");
+        generatePassword(8);
+    }  
+    function testMapFilter() {
+        console.log("Задание 8");
+        const numbers = [2, 5, 8, 10, 3];
+        processNumbers(numbers);
+    }
+</script>
+</body>
+</html>
