@@ -1,4 +1,4 @@
-http://localhost/cgi-bin/HttpResponse.cgi??name=Ivan
+http://localhost/cgi-bin/HttpResponse.cgi?name=Ivan
 http://localhost/cgi-bin/Sarah.cgi/?lanterns=1
 http://localhost/cgi-bin/PrintName.cgi/?name=Ivan
 http://localhost/cgi-bin/getpostparametr.cgi/?first_name=Ivan&last_name=Ivanov&age=20
