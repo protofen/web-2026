@@ -1,0 +1,527 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Golos-UI_Regular;
+    src: url(/src/fonts/Golos-UI_Regular.ttf);
+}
+
+@font-face {
+    font-family: Golos-UI_Bold;
+    src: url(/src/fonts/Golos-UI_Bold.ttf);
+}
+
+body {
+    background-color: #fff;
+    font-family: Golos-UI_Regular;
+    min-height: 100vh;
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+.icon-dot {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.icon-user {
+    margin-bottom: 10px;
+}
+
+.container {
+    position: relative;
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+.profile-card {
+    position: absolute;
+}
+
+.profile-top {
+    top: 10px;
+}
+
+.profile-bottom {
+    top: 675px;
+}
+
+.profile-avatar {
+    position: absolute;
+    left: 365px;
+    width: 32px;
+    height: 32px;
+}
+
+.avatar-img {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-name {
+    position: absolute;
+    left: 400px;
+    top: 10px;
+    font-size: 14px;
+    font-family: Golos-UI_Bold;
+    white-space: nowrap;
+}
+
+.profile-edit {
+    position: absolute;
+    top: 20px;
+    right: 370px;
+}
+
+.post-container {
+    position: absolute;
+    left: 395px;
+    width: 520px;
+}
+
+.post-top {
+    top: 50px;
+}
+
+.post-bottom {
+    top: 720px;
+}
+
+.post-image {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.like-button {
+    position: absolute;
+    top: 615px;
+    left: 400px;
+    width: 68px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    font-family: Golos-UI_Regular;
+    font-size: 15px;
+    color: #222222;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.like-icon {
+    margin-right: 2px;
+}
+
+.post-text {
+    position: absolute;
+    left: 400px;
+    top: 605px;
+    font-size: 15px;
+    line-height: 1.4;
+    width: 520px;
+}
+
+.post-time {
+    position: absolute;
+    left: 400px;
+    top: 650px;
+    font-size: 15px;
+    color: #bababa;
+}
+
+.post-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.slider-slide {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.slider-slide img {
+    width: 100%;
+    display: block;
+}
+
+.slider-slide a {
+    display: block;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+    font-family: monospace;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.slider-prev {
+    left: 10px;
+}
+
+.slider-next {
+    right: 10px;
+}
+
+.slider-indicator {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: Golos-UI_Regular;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+}
+
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-content img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 1010;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.post-image,
+.slider-slide img {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.post-image:hover,
+.slider-slide img:hover {
+    opacity: 0.9;
+}
+
+.post-text {
+    position: absolute;
+    left: 400px;
+    top: 610px;
+    font-size: 15px;
+    line-height: 1.4;
+    width: 520px;
+}
+
+.post-text-content {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #222222;
+}
+
+.expand-btn {
+    background: none;
+    border: none;
+    color: #bababa;
+    font-family: Golos-UI_Regular;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.expand-btn:hover {
+    color: #222222;
+    text-decoration: underline;
+}
+
+
+.post-image,
+.slider-slide img {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.post-image:hover,
+.slider-slide img:hover {
+    opacity: 0.9;
+}
+
+.post-text {
+    position: absolute;
+    left: 400px;
+    top: 570px;
+    font-size: 15px;
+    line-height: 1.4;
+    width: 520px;
+}
+
+.post-text-content {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #222222;
+}
+
+.expand-btn {
+    background: none;
+    border: none;
+    color: #bababa;
+    font-family: Golos-UI_Regular;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.expand-btn:hover {
+    color: #222222;
+    text-decoration: underline;
+}
+
+.create-post-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.create-post-header {
+    margin-bottom: 30px;
+}
+
+.back-link {
+    color: #222;
+    text-decoration: none;
+    font-family: Golos-UI_Regular;
+    font-size: 16px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.create-post-title {
+    font-family: Golos-UI_Bold;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.create-post-content {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.images-section {
+    flex: 2;
+    min-width: 300px;
+}
+
+.images-area {
+    background-color: #f4f4f4;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-photo-main-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: Golos-UI_Bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.add-photo-main-btn:hover {
+    background-color: #444;
+}
+
+.add-photo-text-btn {
+    background: none;
+    border: none;
+    color: #0066cc;
+    font-family: Golos-UI_Regular;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.add-photo-text-btn:hover {
+    text-decoration: underline;
+}
+
+.form-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.caption-input {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: Golos-UI_Regular;
+    font-size: 15px;
+    resize: vertical;
+    margin-bottom: 20px;
+}
+
+.caption-input:focus {
+    outline: none;
+    border-color: #222;
+}
+
+.share-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: Golos-UI_Bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.share-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.image-preview-item {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #e0e0e0;
+}
+
+.image-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.remove-image-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
