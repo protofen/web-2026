@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="src/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <img class="login-img" src="src/images/login.png" alt="Login">
+        <h1>Войти</h1>
+        <div class="form-container">
+            <div class="input-group">
+                <label class="input-label" for="email-input">Электропочта</label>
+                <input class="text-input" id="email-input" type="text">
+                <div class="input-hint" id="email-hint">Введите электропочту</div>
+            </div>
+            <div class="input-group">
+                <div class="input-label">Пароль</div>
+                <input class="text-input" id="password-input" type="password">
+                <div class="input-hint" id="password-hint"></div>
+            </div>
+            <button class="submit-btn" id="submit-btn">Продолжить</button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const emailInput = document.getElementById('email-input');
+            const passwordInput = document.getElementById('password-input');
+            const submitBtn = document.getElementById('submit-btn');
+            const emailHint = document.getElementById('email-hint');
+            const passwordHint = document.getElementById('password-hint');
+            
+            const VALID_EMAIL = 'mail@mail.ru';
+            const VALID_PASSWORD = 'password';
+            
+            function validateEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            function showError(input, hintElement, message) {
+                input.classList.add('error');
+                if (hintElement) {
+                    hintElement.textContent = message;
+                    hintElement.style.color = '#ff0000';
+                }
+            }
+            
+            function clearError(input, hintElement) {
+                input.classList.remove('error');
+                if (hintElement) {
+                    hintElement.textContent = input.id === 'email-input' ? 'Введите электропочту' : '';
+                    hintElement.style.color = '#bababa';
+                }
+            }
+            
+            function checkLogin() {
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+                
+                let hasError = false;
+                
+                if (!validateEmail(email)) {
+                    showError(emailInput, emailHint, 'Введите корректный email');
+                    hasError = true;
+                } else {
+                    clearError(emailInput, emailHint);
+                }
+                
+                if (password === '') {
+                    showError(passwordInput, passwordHint, 'Введите пароль');
+                    hasError = true;
+                } else {
+                    clearError(passwordInput, passwordHint);
+                }
+                
+                if (hasError) {
+                    return false;
+                }
+                
+                if (email !== VALID_EMAIL || password !== VALID_PASSWORD) {
+                    showError(emailInput, emailHint, 'Неверный email или пароль');
+                    showError(passwordInput, passwordHint, 'Неверный email или пароль');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            submitBtn.addEventListener('click', function() {
+                if (checkLogin()) {
+                    window.location.href = 'http://localhost/home.php';
+                }
+            });
+            
+            emailInput.addEventListener('input', function() {
+                if (emailInput.classList.contains('error')) {
+                    if (validateEmail(emailInput.value.trim())) {
+                        clearError(emailInput, emailHint);
+                    }
+                }
+            });
+            
+            passwordInput.addEventListener('input', function() {
+                if (passwordInput.classList.contains('error') && passwordInput.value.trim() !== '') {
+                    clearError(passwordInput, passwordHint);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
